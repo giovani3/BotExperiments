@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 from discord.voice_client import VoiceClient
 from flask import Flask, render_template, request
-#from weatherUpdate import WeatherUpdate
 import time
 import datetime
 import asyncio
@@ -13,14 +12,21 @@ startup_extensions = ["Fun","Weather","Music"]
 bot = commands.Bot("?")
 
 
-
 @bot.event #On_ready defines what is going to appear when bot gets Ready
 async def on_ready():
     await bot.change_presence(game=discord.Game(name="Type ?help"),status=discord.Status("dnd"))
 
-time=datetime.datetime.now()
-print(time.strftime("%d-%B-%Y %X"))
-print("Bot is online and connected to Discord!")
+    time=datetime.datetime.now()
+    print(time.strftime("%d-%B-%Y %X"))
+
+    print('Logged in as')
+    print(bot.user.name)
+    print(bot.user.id)
+    print("Bot is online and connected to Discord!")
+
+    #channel = bot.get_channel('474986185295527957')
+    #await bot.join_voice_channel(channel)
+    #print('Bot joined the channel.')
 
 
 class Main_commands():
@@ -41,4 +47,4 @@ if __name__ == "__main__":
             print ('Failed to load extension {}\n{}'.format(extension, exc))
 
 
-bot.run("NDY4NzkxODk0ODgxNzMwNTcw.DjIZvA.iN0ruLuhOku9N_BGV8JizOty_a4")
+bot.run("")
